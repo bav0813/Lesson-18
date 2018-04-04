@@ -22,13 +22,18 @@
 
         public function minmax(array $arr1)
         {
-            if (!empty($arr1)) {
-                $val1 = min($arr1);
-                $val2 = max($arr1);
-                $arr = array('min' => $val1, 'max' => $val2);
+            try {
+                if (!empty($arr1)) {
+                    $val1 = min($arr1);
+                    $val2 = max($arr1);
+                    $arr = array('min' => $val1, 'max' => $val2);
+                } else
+                    //$arr='Array is empty';
+                    throw new Exception('Empty array!');
             }
-            else
-                $arr='Array is empty';
+            catch (Exception $e) {
+                echo $e->getMessage();
+            }
             return $arr;
 
         }
